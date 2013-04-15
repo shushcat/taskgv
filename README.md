@@ -3,7 +3,7 @@ Generates a pretty, directed graph of [Taskwarrior](http://taskwarrior.org) proj
 
 Things end up looking kinda like this:
 
-![A section of my horrifying todo-list.](examplegraph.tiff)
+![](exgraph.png)
 
 ## Requirements
 
