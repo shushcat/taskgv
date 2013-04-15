@@ -1,6 +1,10 @@
 # taskgv
 Generates a pretty, directed graph of [Taskwarrior](http://taskwarrior.org) projects, tags, and tasks. #Has, thus far, only been tested on OS X.#
 
+Things end up looking kinda like this:
+
+![A section of my horrifying todo-list.](examplegraph.tiff)
+
 ## Requirements
 
 * Python
