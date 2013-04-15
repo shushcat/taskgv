@@ -1,5 +1,5 @@
 # taskgv
-Generates a pretty, directed graph of [Taskwarrior](http://taskwarrior.org) projects, tags, and tasks. #Has, thus far, only been tested on OS X.#
+Generates a pretty, directed graph of [Taskwarrior](http://taskwarrior.org) projects, tags, and tasks. _Has, thus far, only been tested on OS X._
 
 ## Requirements
 
@@ -7,7 +7,7 @@ Generates a pretty, directed graph of [Taskwarrior](http://taskwarrior.org) proj
 
 * Taskwarrior
 
-* Graphviz
+* [Graphviz](http://www.graphviz.org/)
 
 ## Usage
 
