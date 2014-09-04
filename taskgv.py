@@ -81,7 +81,7 @@ def get_json(query):
 
 def call_dot(instr):
     'call dot, returning stdout and stdout'
-    dot = Popen('dot -Tgv'.split(), stdout=PIPE, stderr=PIPE, stdin=PIPE)
+    dot = Popen('dot -Tpng'.split(), stdout=PIPE, stderr=PIPE, stdin=PIPE)
     return dot.communicate(instr.encode('utf-8'))
 
 if __name__ == '__main__':
@@ -177,13 +177,13 @@ if __name__ == '__main__':
     lines.append(FOOTER)
 
     print ('Calling dot')
-    gv, err = call_dot('\n'.join(lines))
+    png, err = call_dot('\n'.join(lines))
     if err != '':
         print ('Error calling dot:')
         print (err.strip())
 
-    print ('Writing to taskgv.gv')
-    with open('/tmp/taskgv.gv', 'w') as f:
-        f.write(gv)
+    print ('Writing to /tmp/taskgv.png')
+    with open('/tmp/taskgv.png', 'w') as f:
+        f.write(png)
 
-subprocess.call("open /tmp/taskgv.gv", shell = True)
+subprocess.call("xdg-open /tmp/taskgv.png", shell = True)
