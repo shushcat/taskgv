@@ -1,6 +1,8 @@
 # taskgv
 Generates a pretty, directed graph of [Taskwarrior](http://taskwarrior.org) projects, tags, and tasks. _Has, thus far, only been tested on OS X._
 
+**edit:** This fork has been tested on Ubuntu 12.04. It writes to a tmp png file and opens it with `xdg-open` (open in user's preferred application).
+
 Things end up looking kinda like this:
 
 ![](exgraph.png)
