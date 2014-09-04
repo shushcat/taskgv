@@ -82,7 +82,7 @@ def get_json(query):
 def call_dot(instr):
     'call dot, returning stdout and stdout'
     dot = Popen('dot -Tgv'.split(), stdout=PIPE, stderr=PIPE, stdin=PIPE)
-    return dot.communicate(instr)
+    return dot.communicate(instr.encode('utf-8'))
 
 if __name__ == '__main__':
     query = sys.argv[1:]
