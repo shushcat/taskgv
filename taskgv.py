@@ -7,7 +7,6 @@ import sys
 import textwrap
 from distutils import spawn
 
-
 # Typical command line usage:
 #
 # taskgv TASKFILTER
@@ -27,37 +26,33 @@ from distutils import spawn
 #
 # taskgv
 #  --> graphs everything - could be massive
-#
 
-
-#Wrap label text at this number of characters
+# Wrap label text at this number of characters.
 charsPerLine = 20;
 
-
-#full list of colors here: http://www.graphviz.org/doc/info/colors.html
+# Full list of colors here: http://www.graphviz.org/doc/info/colors.html
 blockedColor = 'gold4'
-maxUrgencyColor = 'red2' #color of the tasks that have absolutely the highest urgency
+maxUrgencyColor = 'red2'
 unblockedColor = 'green'
 doneColor = 'grey'
 waitColor = 'white'
 deletedColor = 'pink';
 
-#The width of the border around the tasks:
+# The width of the border around the tasks:
 penWidth = 1
 
-#Corrected arrow direction so I don't get confused.
+# Let arrow direction show implication.
 dir = 'back'
 
-#Have one HEADER (and only one) uncommented at a time, or the last uncommented value will be the only one considered
+# Have one HEADER (and only one) uncommented at a time, or the last uncommented value will be the only one considered.
 
-#Left to right layout, my favorite, ganntt-ish
+# Left to right layout:
 #HEADER = "digraph  dependencies { splines=true; overlap=ortho; rankdir=LR; weight=2;"
 
-#Spread tasks on page
+# Spread tasks on page:
 HEADER = "digraph  dependencies { layout=neato;   splines=true; overlap=scalexy;  rankdir=LR; weight=2;"
 
-#More information on setting up graphviz: http://www.graphviz.org/doc/info/attrs.html
-
+# More information on setting up Graphviz: http://www.graphviz.org/doc/info/attrs.html
 
 #-----------------------------------------#
 #  Editing under this might break things  #
@@ -88,16 +83,15 @@ def call_dot(instr):
 if __name__ == '__main__':
     query = sys.argv[1:]
     print ('Calling TaskWarrior')
+    # Print data.
     data = get_json(' '.join(query))
-    #print data
 
     maxUrgency = -9999;
     for datum in data:
         if float(datum['urgency']) > maxUrgency:
             maxUrgency = float(datum['urgency'])
 
-
-    # first pass: labels
+    # First pass: labels.
     lines = [HEADER]
     print ('Printing Labels')
     for datum in data:
@@ -133,7 +127,6 @@ if __name__ == '__main__':
                 prefix = ''
                 color = 'white'
 
-
             if float(datum['urgency']) == maxUrgency:
                 color = maxUrgencyColor
 
@@ -142,12 +135,10 @@ if __name__ == '__main__':
             for descLine in descriptionLines:
                 label += descLine+"\\n";
 
-            lines.append('"%s"[shape=box][penwidth=%d][label="%s\:%s"][fillcolor=%s][style=%s]' % (datum['uuid'], penWidth, prefix, label, color, style))
-            #documentation http://www.graphviz.org/doc/info/attrs.html
+                # Documentation http://www.graphviz.org/doc/info/attrs.html
+               lines.append('"%s"[shape=box][penwidth=%d][label="%s\:%s"][fillcolor=%s][style=%s]' % (datum['uuid'], penWidth, prefix, label, color, style))
 
-
-
-    # second pass: dependencies
+    # Second pass: dependencies.
     print ('Resolving Dependencies')
     for datum in data:
         if datum['description']:
@@ -157,7 +148,7 @@ if __name__ == '__main__':
                     lines.append('"%s" -> "%s"[dir=%s];' % (dep, datum['uuid'], dir))
                     continue
 
-    # third pass: projects
+    # Third pass: projects.
     print ('Making and Linking Project Nodes')
     for datum in data:
         for proj in datum.get('project', '').split(','):
@@ -166,7 +157,7 @@ if __name__ == '__main__':
                 lines.append('"%s"[shape=circle][fontsize=40.0][penwidth=16][color=gray52]' % (proj))
                 continue
 
-    # third pass: tags
+    # Third pass: tags.
     print ('Making and Linking Tag Nodes')
     for datum in data:
         for tag in datum.get('tags',''):
