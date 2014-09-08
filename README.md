@@ -1,7 +1,5 @@
 # taskgv
-Generates a pretty, directed graph of [Taskwarrior](http://taskwarrior.org) projects, tags, and tasks. _Has, thus far, only been tested on OS X._
-
-**edit:** This fork has been tested on Ubuntu 12.04. It writes to a tmp png file and opens it with `xdg-open` (open in user's preferred application).
+Generates a pretty, directed graph of [Taskwarrior](http://taskwarrior.org) projects, tags, and tasks.  After the graph has been generated, it's opened using either `xdg-open` (under GNU/Linux) or `open` (under OS X).
 
 Things end up looking kinda like this:
 
@@ -13,6 +11,7 @@ Projects are represented by large circles, tasks by colored rectangles, and tags
 
 ## Requirements
 
+* Either of the `xdg-open` or `open` commands, present by default on most GNU
 * Python
 
 * Taskwarrior
