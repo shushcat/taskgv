@@ -5,6 +5,7 @@ from subprocess import Popen, PIPE
 import subprocess
 import sys
 import textwrap
+from distutils import spawn
 
 
 # Typical command line usage:
@@ -186,4 +187,9 @@ if __name__ == '__main__':
     with open('/tmp/taskgv.png', 'w') as f:
         f.write(png)
 
-subprocess.call("xdg-open /tmp/taskgv.png", shell = True)
+# Use `xdg-open` if it's present, `open` otherwise.
+display_command = spawn.find_executable("xdg-open")
+if display_command == None:
+    display_command = spawn.find_executable("open")
+
+subprocess.call(display_command + " /tmp/taskgv.png", shell = True)
