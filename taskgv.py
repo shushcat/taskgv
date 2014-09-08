@@ -15,12 +15,12 @@ import textwrap
 #
 # Probably the most helpful commands are:
 #
-# taskgv project:fooproject status:pending   
+# taskgv project:fooproject status:pending
 #  --> graph pending tasks in project 'fooproject'
 #
 # taskgv project:fooproject
 #  --> graphs all tasks in 'fooproject', pending, completed, deleted
-# 
+#
 # taskgv status:pending
 #  --> graphs all pending tasks in all projects
 #
@@ -89,7 +89,7 @@ if __name__ == '__main__':
     print ('Calling TaskWarrior')
     data = get_json(' '.join(query))
     #print data
-    
+
     maxUrgency = -9999;
     for datum in data:
         if float(datum['urgency']) > maxUrgency:
@@ -140,7 +140,7 @@ if __name__ == '__main__':
             descriptionLines = textwrap.wrap(datum['description'],charsPerLine);
             for descLine in descriptionLines:
                 label += descLine+"\\n";
-    
+
             lines.append('"%s"[shape=box][penwidth=%d][label="%s\:%s"][fillcolor=%s][style=%s]' % (datum['uuid'], penWidth, prefix, label, color, style))
             #documentation http://www.graphviz.org/doc/info/attrs.html
 
