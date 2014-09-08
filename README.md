@@ -11,12 +11,12 @@ Projects are represented by large circles, tasks by colored rectangles, and tags
 
 ## Requirements
 
-* Either of the `xdg-open` or `open` commands, present by default on most GNU
+* Either of the `xdg-open` or `open` commands, present by default on most GNU/Linux or OS X installs, respectively.
 * Python
 
 * Taskwarrior
 
-* [Graphviz](http://www.graphviz.org/)
+* [Graphviz](http://www.graphviz.org/)'s `digraph` command.
 
 ## Usage
 
