@@ -175,7 +175,7 @@ if __name__ == '__main__':
         print (err.strip())
 
     print ('Writing to /tmp/taskgv.png')
-    with open('/tmp/taskgv.png', 'w') as f:
+    with open('/tmp/taskgv.png', 'wb') as f:
         f.write(png)
 
 # Use `xdg-open` if it's present, `open` otherwise.
