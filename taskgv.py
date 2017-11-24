@@ -70,6 +70,10 @@ def call_taskwarrior(cmd):
 def get_json(query):
     'call taskwarrior, returning objects from json'
     result, err = call_taskwarrior('end.after:today xor status:pending export %s' % query)
+    if err.decode("utf-8") != '':
+        print ('Error calling taskwarrior:')
+        print (err.decode("utf-8"))
+        quit()
     return json.loads(result.decode("utf-8"))
 
 def call_dot(instr):
@@ -167,9 +171,10 @@ if __name__ == '__main__':
 
     print ('Calling dot')
     svg, err = call_dot('\n'.join(lines))
-    if err != '':
+    if err.decode("utf-8") != '':
         print ('Error calling dot:')
-        print (err.strip())
+        print (err.decode("utf-8"))
+        quit()
 
     print ('Writing to /tmp/taskgv.svg')
     with open('/tmp/taskgv.svg', 'w') as f:
