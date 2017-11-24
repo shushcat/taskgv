@@ -136,7 +136,7 @@ if __name__ == '__main__':
                 label += descLine+"\\n";
 
                 # Documentation http://www.graphviz.org/doc/info/attrs.html
-               lines.append('"%s"[shape=box][penwidth=%d][label="%s\:%s"][fillcolor=%s][style=%s]' % (datum['uuid'], penWidth, prefix, label, color, style))
+                lines.append('"%s"[shape=box][penwidth=%d][label="%s\:%s"][fillcolor=%s][style=%s]' % (datum['uuid'], penWidth, prefix, label, color, style))
 
     # Second pass: dependencies.
     print ('Resolving Dependencies')
