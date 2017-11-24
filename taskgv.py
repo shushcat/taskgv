@@ -177,7 +177,7 @@ if __name__ == '__main__':
         quit()
 
     print ('Writing to /tmp/taskgv.svg')
-    with open('/tmp/taskgv.svg', 'w') as f:
+    with open('/tmp/taskgv.svg', 'wb') as f:
         f.write(svg)
 
 # Use `xdg-open` if it's present, `open` otherwise.
