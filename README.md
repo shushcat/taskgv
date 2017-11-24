@@ -11,7 +11,8 @@ Projects are represented by large circles, tasks by colored rectangles, and tags
 
 ## Requirements
 
-* Either of the `xdg-open` or `open` commands, present by default on most GNU/Linux or OS X installs, respectively.
+* Either of the `xdg-open` or `open` commands, present by default on most GNU/Linux or macOS installs, respectively.
+
 * Python
 
 * Taskwarrior
