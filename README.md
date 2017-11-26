@@ -1,5 +1,5 @@
 # taskgv
-Generates a pretty, directed graph of [Taskwarrior](http://taskwarrior.org) projects, tags, and tasks.  After the graph has been generated, it's opened using either `xdg-open` (under GNU/Linux) or `open` (under OS X).
+Generates a pretty, directed graph of [Taskwarrior](http://taskwarrior.org) projects, tags, and tasks.  After the graph has been generated, it's opened using either `xdg-open` (under GNU/Linux) or `open` (under macOS).
 
 Things end up looking kinda like this:
 
